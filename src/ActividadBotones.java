@@ -10,7 +10,7 @@ public class ActividadBotones {
     static JTextField txtNum1, txtNum2, txtResultado;
     static JButton btnSuma, btnResta, btnMultiplicacion, btnDivision, btnRaizDe1, btnRaizDe2, btnMayor, btnLimpiar;
     static JPanel padrePanel, firstSonPanel, secondSonPanel, thirdSonPanel;
-    static double result;
+    static double result, num1, num2;
 
     public static void main(String[] args) {
         inicializarJFrameBotones();
@@ -24,6 +24,20 @@ public class ActividadBotones {
         agregarPanelPadreAlFrame();
         frameBotones.setVisible(true);
         sumar();
+        restar();
+    }
+
+    private static void restar() {
+        btnResta.addActionListener(e -> {
+            asignarValoresNum1Num2();
+            result = num1 - num2;
+            txtResultado.setText(String.valueOf(result));
+        });
+    }
+
+    private static void asignarValoresNum1Num2(){
+        num1 = Double.parseDouble(txtNum1.getText());
+        num2 = Double.parseDouble(txtNum2.getText());
     }
 
     private static double ObtenerNum1(){
@@ -35,8 +49,7 @@ public class ActividadBotones {
 
     private static void sumar() {
         btnSuma.addActionListener(e -> {
-            double num1 = ObtenerNum1();
-            double num2 = ObtenerNum2();
+            asignarValoresNum1Num2();
             result = num1 + num2;
             txtResultado.setText(String.valueOf(result));
         });
