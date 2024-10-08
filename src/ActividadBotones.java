@@ -29,6 +29,15 @@ public class ActividadBotones {
         dividir();
         raizDeNum1();
         raizDeNum2();
+        mayor();
+    }
+
+    private static void mayor() {
+        btnMayor.addActionListener(e -> {
+            asignarValoresNum1Num2();
+            result = Math.max(num1, num2);
+            txtResultado.setText(String.valueOf(result));
+        });
     }
 
     private static void raizDeNum2() {
