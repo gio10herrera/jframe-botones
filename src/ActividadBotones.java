@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class ActividadBotones {
@@ -6,24 +7,65 @@ public class ActividadBotones {
     static JLabel lblNum1, lblNum2, lblResultado;
     static JTextField txtNum1, txtNum2, txtResultado;
     static JButton btnSuma, btnResta, btnMultiplicacion, btnDivision, btnRaizDe1, btnRaizDe2, btnMayor, btnLimpiar;
-    static JPanel padre, firstSon, secondSon, thirdSon;
+    static JPanel padrePanel, firstSonPanel, secondSonPanel, thirdSonPanel;
 
     public static void main(String[] args) {
         inicializarJFrameBotones();
-        frameBotones.setVisible(true);
         instanciarComponentes();
         inicializarPanelPadre();
         inicializarPanelesHijos();
+        agregarComponentesFirstSonPanel();
+        agregarComponentesSecondSonPanel();
+        agegarComponentesThirdSonPanel();
+        agregarPanelesHijosAlPadre();
+        agregarPanelPadreAlFrame();
+        frameBotones.setVisible(true);
+    }
+
+    private static void agegarComponentesThirdSonPanel() {
+        thirdSonPanel.add(lblResultado);
+        thirdSonPanel.add(txtResultado);
+    }
+
+    private static void agregarPanelPadreAlFrame() {
+        frameBotones.add(padrePanel);
+    }
+
+    private static void agregarComponentesSecondSonPanel() {
+        secondSonPanel.add(btnSuma);
+        secondSonPanel.add(btnResta);
+        secondSonPanel.add(btnMultiplicacion);
+        secondSonPanel.add(btnDivision);
+        secondSonPanel.add(btnRaizDe1);
+        secondSonPanel.add(btnRaizDe2);
+        secondSonPanel.add(btnMayor);
+        secondSonPanel.add(btnLimpiar);
+    }
+
+    private static void agregarPanelesHijosAlPadre() {
+        padrePanel.add(firstSonPanel, BorderLayout.NORTH);
+        padrePanel.add(secondSonPanel, BorderLayout.CENTER);
+        padrePanel.add(thirdSonPanel, BorderLayout.SOUTH);
+    }
+
+    private static void agregarComponentesFirstSonPanel() {
+        firstSonPanel.add(lblNum1);
+        firstSonPanel.add(txtNum1);
+        firstSonPanel.add(lblNum2);
+        firstSonPanel.add(txtNum2);
     }
 
     private static void inicializarPanelesHijos() {
-        firstSon  = new JPanel(new GridLayout(2, 2, 5, 5));
-        secondSon = new JPanel(new GridLayout(3, 3, 5, 5));
-        thirdSon = new JPanel(new GridLayout(1, 2, 5, 5));
+        firstSonPanel  = new JPanel(new GridLayout(2, 2, 5, 5));
+        firstSonPanel.setBorder(new EmptyBorder(10, 5, 15, 45));
+        secondSonPanel = new JPanel(new GridLayout(3, 3, 5, 15));
+        secondSonPanel.setBorder(new EmptyBorder(10, 5, 15, 10));
+        thirdSonPanel = new JPanel(new GridLayout(1, 2, 5, 5));
+        thirdSonPanel.setBorder(new EmptyBorder(10, 5, 15, 45));
     }
 
     private static void inicializarPanelPadre() {
-        padre = new JPanel(new BorderLayout());
+        padrePanel = new JPanel(new BorderLayout());
     }
 
     private static void instanciarComponentes() {
@@ -39,6 +81,7 @@ public class ActividadBotones {
         txtNum2.setHorizontalAlignment(SwingConstants.CENTER);
         txtResultado = new JTextField();
         txtResultado.setHorizontalAlignment(SwingConstants.CENTER);
+        txtResultado.setEditable(false);
         btnSuma = new JButton("Suma");
         btnResta = new JButton("Resta");
         btnMultiplicacion = new JButton("Multiplicacion");
