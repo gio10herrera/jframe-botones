@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ActividadBotones {
     static JFrame frameBotones;
@@ -8,6 +10,7 @@ public class ActividadBotones {
     static JTextField txtNum1, txtNum2, txtResultado;
     static JButton btnSuma, btnResta, btnMultiplicacion, btnDivision, btnRaizDe1, btnRaizDe2, btnMayor, btnLimpiar;
     static JPanel padrePanel, firstSonPanel, secondSonPanel, thirdSonPanel;
+    static double result;
 
     public static void main(String[] args) {
         inicializarJFrameBotones();
@@ -20,6 +23,23 @@ public class ActividadBotones {
         agregarPanelesHijosAlPadre();
         agregarPanelPadreAlFrame();
         frameBotones.setVisible(true);
+        sumar();
+    }
+
+    private static double ObtenerNum1(){
+        return Double.parseDouble(txtNum1.getText());
+    }
+    private static double ObtenerNum2(){
+        return Double.parseDouble(txtNum2.getText());
+    }
+
+    private static void sumar() {
+        btnSuma.addActionListener(e -> {
+            double num1 = ObtenerNum1();
+            double num2 = ObtenerNum2();
+            result = num1 + num2;
+            txtResultado.setText(String.valueOf(result));
+        });
     }
 
     private static void agegarComponentesThirdSonPanel() {
