@@ -27,20 +27,32 @@ public class ActividadBotones {
         restar();
         multiplicar();
         dividir();
-        raizdeNum1();
+        raizDeNum1();
+        raizDeNum2();
     }
 
-    private static void raizdeNum1() {
+    private static void raizDeNum2() {
+        btnRaizDe2.addActionListener(e -> {
+            asignarValoresNum1Num2();
+            calcularSqrt(num2);
+        });
+    }
+
+    private static void raizDeNum1() {
         btnRaizDe1.addActionListener(e -> {
             asignarValoresNum1Num2();
-            if (num1 >= 0) {
-                result = Math.sqrt(num1);
-                result = Math.round(result * 100) / 100.0;
-                txtResultado.setText(String.valueOf(result));
-            } else {
-                txtResultado.setText("Error");
-            }
+            calcularSqrt(num1);
         });
+    }
+
+    private static void calcularSqrt(double num){
+        if (num >= 0) {
+            result = Math.sqrt(num);
+            result = Math.round(result * 100) / 100.0;
+            txtResultado.setText(String.valueOf(result));
+        } else {
+            txtResultado.setText("Error");
+        }
     }
 
     private static void dividir() {
