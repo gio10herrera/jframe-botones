@@ -25,6 +25,15 @@ public class ActividadBotones {
         frameBotones.setVisible(true);
         sumar();
         restar();
+        multiplicar();
+    }
+
+    private static void multiplicar() {
+        btnMultiplicacion.addActionListener(e -> {
+            asignarValoresNum1Num2();
+            result = num1 * num2;
+            lblResultado.setText(String.valueOf(result));
+        });
     }
 
     private static void restar() {
