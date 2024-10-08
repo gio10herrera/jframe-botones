@@ -26,13 +26,27 @@ public class ActividadBotones {
         sumar();
         restar();
         multiplicar();
+        dividir();
+    }
+
+    private static void dividir() {
+        btnDivision.addActionListener(e -> {
+            asignarValoresNum1Num2();
+            if (num2 != 0){
+                result = num1 / num2;
+                result = Math.round(result*100)/100.0;
+                txtResultado.setText(String.valueOf(result));
+            } else {
+                txtResultado.setText("Error");
+            }
+        });
     }
 
     private static void multiplicar() {
         btnMultiplicacion.addActionListener(e -> {
             asignarValoresNum1Num2();
             result = num1 * num2;
-            lblResultado.setText(String.valueOf(result));
+            txtResultado.setText(String.valueOf(result));
         });
     }
 
