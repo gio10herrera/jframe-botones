@@ -30,6 +30,18 @@ public class ActividadBotones {
         raizDeNum1();
         raizDeNum2();
         mayor();
+        limpiar();
+    }
+
+    private static void limpiar() {
+        btnLimpiar.addActionListener(e -> {
+            txtNum1.setText("");
+            txtNum2.setText("");
+            txtResultado.setText("");
+            result = 0;
+            num1 = 0;
+            num2 = 0;
+        });
     }
 
     private static void mayor() {
